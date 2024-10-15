@@ -26,28 +26,30 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-gray-900 to-gray-800 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-100 to-purple-100 p-4">
       <div className="text-center">
         <motion.div
-          className="text-5xl md:text-7xl font-bold text-white mb-4"
+          className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: showThirdPart ? 1 : 0, y: showThirdPart ? 0 : -20 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 1 }}
         >
           플래시톡
         </motion.div>
-        <div className="text-3xl md:text-5xl font-bold text-white mb-8">
+        <div className="text-3xl md:text-5xl font-bold mb-8">
           <motion.span
+            className="bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text"
             initial={{ opacity: 0 }}
             animate={{ opacity: showFirstPart ? 1 : 0 }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 0.5 }}
           >
             세상에서 가장
           </motion.span>{" "}
           <motion.span
+            className="bg-gradient-to-r from-purple-500 to-pink-500 text-transparent bg-clip-text"
             initial={{ opacity: 0 }}
             animate={{ opacity: showSecondPart ? 1 : 0 }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 0.5 }}
           >
             간단한 대화
           </motion.span>
@@ -55,11 +57,11 @@ export default function HomePage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: showButton ? 1 : 0, y: showButton ? 0 : 20 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.5 }}
         >
           <Link href="/start">
             <Button 
-              className="mt-8 px-8 py-4 bg-blue-500 text-white rounded-full text-xl font-semibold hover:bg-blue-600 transition-colors duration-300"
+              className="mt-8 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
             >
               시작하기
             </Button>
