@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Button } from "@/components/ui/button"
-import Link from 'next/link'
+// import * as motion from "framer-motion/client"
+import { StartButton } from './StartButton'
+
 
 export default function HomePage() {
   const [showFirstPart, setShowFirstPart] = useState(false)
@@ -59,13 +60,7 @@ export default function HomePage() {
           animate={{ opacity: showButton ? 1 : 0, y: showButton ? 0 : 20 }}
           transition={{ duration: 0.5 }}
         >
-          <Link href="/start">
-            <Button 
-              className="mt-8 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full text-xl font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
-            >
-              시작하기
-            </Button>
-          </Link>
+          <StartButton />
         </motion.div>
       </div>
     </div>

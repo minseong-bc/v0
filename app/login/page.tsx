@@ -1,22 +1,15 @@
-'use client'
-
+'use client';
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { motion } from 'framer-motion';
+import { Label } from "@/components/ui/label"
+import { LoginSubmit } from "./LoginSubmit"
+import { IdInput } from "./idInput"
+import { NameInput } from "./NameInput"
+import { SubmitBtn } from './SubmitBtn'
 
-export default function LoginPage() {
-  const [studentId, setStudentId] = useState('')
-  const [password, setPassword] = useState('')
+export default async function LoginPage() {
   const [showError, setShowError] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // 로그인 로직 구현
-    console.log('Login attempt:', { studentId, password })
-  }
 
   return (
     <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-r from-blue-100 to-purple-100 p-4">
@@ -34,26 +27,14 @@ export default function LoginPage() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={LoginSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label htmlFor="studentId" className="text-gray-700">학번</Label>
-            <Input
-              id="studentId"
-              value={studentId}
-              onChange={(e) => setStudentId(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="'-' 없이 숫자만 입력해주세요"
-            />
+            <IdInput />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password" className="text-gray-700">비밀번호</Label>
-            <Input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <Label htmlFor="name" className="text-gray-700">이름</Label>
+            < NameInput />
           </div>
           {showError && (
             <Alert variant="destructive" className="mt-2">
@@ -62,9 +43,7 @@ export default function LoginPage() {
               </AlertDescription>
             </Alert>
           )}
-          <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md transition-colors duration-300">
-            로그인
-          </Button>
+          < SubmitBtn />
         </form>
       </motion.div>
     </div>

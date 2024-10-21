@@ -1,10 +1,8 @@
-'use client'
+import * as motion from "framer-motion/client"
+import { SignupBtn } from './SignupBtn'
+import { LoginBtn } from './LoginBtn'
 
-import { motion } from 'framer-motion'
-import { Button } from "@/components/ui/button"
-import Link from 'next/link'
-
-export default function StartPage() {
+export default async function StartPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-100 to-purple-100 p-4">
       <motion.div
@@ -23,11 +21,7 @@ export default function StartPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <span className="text-2xl font-semibold text-gray-700">처음이라면?</span>
-          <Link href="/signup">
-            <Button className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full">
-              가입하기
-            </Button>
-          </Link>
+          <SignupBtn />
         </motion.div>
         <motion.div 
           className="flex items-center justify-between"
@@ -36,11 +30,7 @@ export default function StartPage() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <span className="text-2xl font-semibold text-gray-700">가입했다면?</span>
-          <Link href="/login">
-            <Button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full">
-              시작하기
-            </Button>
-          </Link>
+          <LoginBtn />
         </motion.div>
       </div>
     </div>
