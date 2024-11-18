@@ -1,7 +1,5 @@
-"use client";
 import React from "react";
 // import executeQuery from "../_lib/db";
-
 
 export async function SignUpSubmit (form: React.FormEvent<HTMLFormElement>) {
     form.preventDefault();

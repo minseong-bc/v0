@@ -1,37 +1,21 @@
-//app/_lib/db.tsx
-import { createPool } from 'mysql2'
+// app/_lib/db.ts
+import mysql from 'mysql2/promise';
 
-const pool = createPool({
+const pool = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE,
-    port: 3306,
-})
+    database: process.env.DB_DATABASE
+});
 
-pool.getConnection((err, conn) => {
-    if (err) console.log('Error connecting to db...')
-    else console.log('Connected to db...!')
-    conn.release()
-})
-
-const executeQuery = (query: string) => {
-    return new Promise((resolve, reject) => {
-        try {
-            pool.query(query, (err, data) => {
-                if (err) {
-                    console.log('Error in executing the query')
-                    reject(err)
-                }
-                console.log('------db.jsx------')
-                //console.log(data)
-                resolve(data)
-            })
-        } catch (err) {
-            reject(err)
-        }
-    })
+// SQL SELECT 공통 함수
+export const selectSQL = async (sqlQuery :string) => {
+    try {
+        const [rows] = await pool.query(sqlQuery);
+        return rows;
+    } catch (err) {
+        console.error(err);
+    }
 }
-// let queryString = "SELECT sid FROM db_test.stu where sid ='{ studentId }';" ;
 
-export default executeQuery;
+// export  {Component1 , Component2, Component3, ...} --> 이런식으로 여러개를 export할 수 있음

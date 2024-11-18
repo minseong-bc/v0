@@ -1,5 +1,4 @@
 'use client'
-
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Label } from "@/components/ui/label"
@@ -48,7 +47,7 @@ export default function SignUpPage() {
             {showError && !idChecked && (
               <Alert variant="destructive" className="mt-2">
                 <AlertDescription>
-                  학번 중복확인을 해주십시오
+                  학번 중복확인을 해주세요.
                 </AlertDescription>
               </Alert>
             )}
